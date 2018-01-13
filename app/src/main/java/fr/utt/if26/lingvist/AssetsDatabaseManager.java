@@ -41,7 +41,7 @@ import android.util.Log;
  */
 public class AssetsDatabaseManager {
     private static String tag = "AssetsDatabase"; // for LogCat
-    private static String databasepath = "/data/data/fr.utt.if26.localdb/database"; // %s is packageName
+    private static String databasepath = "/data/data/fr.utt.if26.Lingvist/database"; // %s is packageName
 
 
     // A mapping from assets database file to SQLiteDatabase object
