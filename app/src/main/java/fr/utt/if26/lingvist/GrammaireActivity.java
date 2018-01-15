@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,16 +23,26 @@ import java.util.List;
 
 public class GrammaireActivity extends AppCompatActivity {
     ArrayList<Grammaire> grammaires;
+    ArrayList<Grammaire> grammairesSelect;
     SQLiteDatabase db;
     MyAdapter myAdapter;
-    //AssetsDatabaseManager mg;
+    Grammaire grammaireSelec;
+    AssetsDatabaseManager mg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.grammaire);
-        ListView lv = (ListView) findViewById(R.id.grammaireList);
         grammaires = new ArrayList<Grammaire>();
+        grammairesSelect = new ArrayList<Grammaire>();
+        Log.i("db start", "start");
+        AssetsDatabaseManager.initManager(getApplication());
+        mg = AssetsDatabaseManager.getManager();
+        // 通过管理对象获取数据库
+        db = mg.getDatabase("Lingvist.db");
+        Log.i("db gets", "get");
+        ListView lv = (ListView) findViewById(R.id.grammaireList);
+
 
 
         /*Intent intent = getIntent();
@@ -41,8 +52,9 @@ public class GrammaireActivity extends AppCompatActivity {
         /*SQLiteDataBaseSerializable dbSerRec = (SQLiteDataBaseSerializable) intent.getSerializableExtra("dbSer");
         db = dbSerRec.getDb();*/
 
+        query2();
         // 查询数据
-        Query();
+        //Query();
         // 创建MyAdapter实例
         myAdapter = new MyAdapter(this);
         // 向listview中添加Adapter
@@ -61,7 +73,7 @@ public class GrammaireActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // TODO Auto-generated method stub
-            return grammaires.size();
+            return grammairesSelect.size();
         }
 
         @Override
@@ -79,7 +91,8 @@ public class GrammaireActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             //  lire les titires de conseils depuis le tableau "grammaire"
-            Grammaire g = grammaires.get(position);
+            //Grammaire g = grammaires.get(position);
+            Grammaire g = grammairesSelect.get(position);
             ViewHolder viewHolder = null;
             if (convertView == null) {
                 viewHolder = new ViewHolder();
@@ -106,18 +119,24 @@ public class GrammaireActivity extends AppCompatActivity {
         private TextView txt_contenu;
     }
 
-    public void Query() {
-        Grammaire g = new Grammaire();
+    private void Query() {
+        //Grammaire g = new Grammaire();
+        grammaires.addAll(grammairesSelect);
+    }
 
-        grammaires.addAll(g.getGrammaires());
-        /*Cursor cursor = db.rawQuery("select * from grammaire", null);
+    private void query2(){
+        //Log.i("db start", "start");
+
+        Log.i("db getsssm:l", String.valueOf(grammairesSelect.size()));
+        Cursor cursor = db.rawQuery("select * from grammaire", null);
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
-            String titre = cursor.getString(1);
-            String contenu = cursor.getString(2);
-            Grammaire grammaire = new Grammaire(id, titre, contenu);
-            grammaires.add(grammaire);
-        }*/
-
+            String letter = cursor.getString(1);
+            String hint = cursor.getString(2);
+            Log.i("iddddddd", letter);
+            Grammaire g = new Grammaire(id, letter, hint);
+            grammairesSelect.add(g);
+        }
+        Log.i("dbtestssss", String.valueOf(grammairesSelect.size()));
     }
 }

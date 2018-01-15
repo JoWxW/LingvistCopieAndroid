@@ -51,7 +51,7 @@
             android:id="@+id/rb_message"
             style="@style/tab_menu_item"
             android:drawableTop="@drawable/tab_menu_defis"
-            android:text="Défis" />
+            android:text="Phrase" />
 
         <RadioButton
             android:id="@+id/rb_better"
