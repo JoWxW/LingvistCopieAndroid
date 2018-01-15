@@ -11,9 +11,11 @@
         android:id="@+id/titleGrammaire"
         android:layout_width="match_parent"
         android:layout_height="42dp"
+        android:fontFamily="@font/mechanicalbd"
+        android:gravity="center"
         android:text="@string/conseils_grammatic"
-        android:textSize="65px"
-        android:gravity="center" />
+        android:textColor="@color/text_black"
+        android:textSize="65px" />
 
     <ListView
         android:id="@+id/grammaireList"

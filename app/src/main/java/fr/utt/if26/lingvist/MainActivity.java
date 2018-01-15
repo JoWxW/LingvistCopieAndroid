@@ -81,14 +81,6 @@ public class MainActivity extends Activity implements RadioGroup.OnCheckedChange
                     fTransaction.show(apprendreFragment);
                 }*/
                 break;
-            case R.id.rb_message:
-                /*if(defisFragment == null){
-                    defisFragment = new DefisFragment("defis");
-                    fTransaction.add(R.id.ly_content,defisFragment);
-                }else{
-                    fTransaction.show(defisFragment);
-                }*/
-                break;
             case R.id.rb_better:
                 /*if(compteFragment == null){
                     compteFragment = new CompteFragment("compte");

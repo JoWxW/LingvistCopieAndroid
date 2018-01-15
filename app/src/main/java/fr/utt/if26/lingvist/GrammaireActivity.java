@@ -26,7 +26,6 @@ public class GrammaireActivity extends AppCompatActivity {
     ArrayList<Grammaire> grammairesSelect;
     SQLiteDatabase db;
     MyAdapter myAdapter;
-    Grammaire grammaireSelec;
     AssetsDatabaseManager mg;
 
     @Override

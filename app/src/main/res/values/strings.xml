@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Lingvist</string>
     <string name="conseils_grammatic">Conseils grammatic</string>
+    <string name="next">Next</string>
+    <string name="enter">Enter</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign Up</string>
 </resources>

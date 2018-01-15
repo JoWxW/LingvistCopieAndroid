@@ -25,4 +25,13 @@
         <item name="android:fontFamily">@font/mechanical</item>
     </style>
 
+    <style name="signButton">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:fontFamily">@font/mechanical</item>
+        <item name="android:layout_width">300dp</item>
+        <item name="android:background">@drawable/radius_coner_button</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
 </resources>
